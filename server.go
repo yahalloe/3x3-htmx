@@ -86,5 +86,5 @@ func main() {
 
 	// Start HTTPS server (without HTTP/2)
 	log.Printf("Server running at https://localhost%s\n", port)
-	log.Fatal(server.ListenAndServeTLS("", ""))
+	log.Fatal(server.ListenAndServeTLS(":80", ""))
 }
