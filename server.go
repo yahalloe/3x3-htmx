@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/tls"
 	"io"
 	"log"
 	"net/http"
@@ -10,7 +9,9 @@ import (
 
 func main() {
 	// Define port and directories
-	port := ":3000"
+	port := ":443"
+	certFile := "/etc/letsencrypt/live/yahallo.tech/fullchain.pem"
+	keyFile := "/etc/letsencrypt/live/yahallo.tech/privkey.pem"
 	staticDir := http.Dir("./src")
 
 	// Serve static files under /public and /src
@@ -69,22 +70,9 @@ func main() {
 		io.Copy(w, resp.Body)
 	})
 
-	// Load certificates for HTTPS
-	cert, err := tls.LoadX509KeyPair("/etc/letsencrypt/live/yahallo.tech/fullchain.pem", "/etc/letsencrypt/live/yahallo.tech/privkey.pem")
-	if err != nil {
-		log.Fatalf("Error loading certificates: %v", err)
-	}
-
-	// Create a custom HTTP server with TLS (without HTTP/2)
-	server := &http.Server{
-		Addr:    port,
-		Handler: http.DefaultServeMux,
-		TLSConfig: &tls.Config{
-			Certificates: []tls.Certificate{cert},
-		},
-	}
-
-	// Start HTTPS server (without HTTP/2)
+	// Start HTTPS server
 	log.Printf("Server running at https://localhost%s\n", port)
-	log.Fatal(server.ListenAndServeTLS(":80", ""))
+
+	// Using http.DefaultServeMux for the handler
+	log.Fatal(http.ListenAndServeTLS(port, certFile, keyFile, nil))
 }
