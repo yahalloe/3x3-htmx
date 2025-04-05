@@ -19,9 +19,18 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="prefetch" href="/public">
+    <link rel="prefetch" href="/public" />
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     <script src="https://unpkg.com/htmx-ext-preload@2.1.0"></script>
+    <script src="src/scripts.js"></script>
+    <script>
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling
+        });
+      }
+    </script>
   </head>
   <body hx-ext="preload">
     <header>
@@ -40,8 +49,12 @@
     </header>
     <main>
       <div class="grid-container">
-        <a title="Hyouka" href="https://myanimelist.net/anime/12189/Hyouka"
-        hx-trigger="mouseenter" preload="mouseover">
+        <a
+          title="Hyouka"
+          href="https://myanimelist.net/anime/12189/Hyouka"
+          hx-trigger="mouseenter"
+          preload="mouseover"
+        >
           <img src="/public/hyouka.jpg" alt="Hyouka" height="500px" />
         </a>
 
@@ -51,7 +64,7 @@
           hx-target="main"
           hx-swap="innerHTML"
           hx-trigger="click"
-          preload="mouseover" 
+          preload="mouseover"
           preload-images="true"
         >
           <img
@@ -122,20 +135,19 @@
     <footer>
       <h2>Check my other 3x3's</h2>
       <div class="linkingPics">
-        <a href="romcom3x3.html" title="romcom3x3"
-        hx-get="/romance"
-        hx-target="body"
-        hx-swap="innerHTML"
-        hx-trigger="click"
+        <a
+          href="romcom3x3.html"
+          title="romcom3x3"
+          hx-get="/romance"
+          hx-target="body"
+          hx-swap="innerHTML"
+          hx-trigger="click"
+          onclick="scrollToTop()"
         >
           <img src="public/oregairu.jpg" alt="oregairu" height="500px" />
         </a>
         <a href="animeOP3x3.html" title="animeOP3x3">
-          <img
-            src="public/rere.jpg"
-            alt=""
-            height="500px"
-          />
+          <img src="public/rere.jpg" alt="" height="500px" />
         </a>
         <a href="" title="">
           <img src="public/question.webp" alt="" height="500px" />

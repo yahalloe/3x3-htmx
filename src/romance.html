@@ -1,5 +1,14 @@
 <head>
-    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Smooth scrolling
+      });
+    }
+  </script>
+</head>
 </head>
 <body>
   <header>
@@ -92,6 +101,7 @@
         hx-swap="innerHTML"
         hx-trigger="click"
         hx-push-url="true"
+        onclick="scrollToTop()"
       >
         <img src="public/bunnyGirl.jpg" alt="oregairu" height="500px" />
       </a>

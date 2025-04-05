@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Change port if needed (use :8443 for local testing)
-	port := ":443" // change back to ":443" in production if running with proper privileges
+	port := ":3000" // change back to ":443" in production if running with proper privileges
 	certFile := "/etc/letsencrypt/live/yahallo.tech/fullchain.pem"
 	keyFile := "/etc/letsencrypt/live/yahallo.tech/privkey.pem"
 	staticDir := http.Dir("./src")
@@ -28,7 +28,7 @@ func main() {
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 	http.Handle("/src/", http.StripPrefix("/src/", http.FileServer(staticDir)))
 
-	// Serve additional HTML files
+	//  Serve additional HTML files
 	http.HandleFunc("/edgerunners", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
@@ -80,7 +80,7 @@ func main() {
 
 	log.Printf("Server running at https://localhost%s\n", port)
 	// For local testing, you might not have valid TLS certificates.
-	// If testing without TLS, you can use http.ListenAndServe(port, nil) instead.
+	// http.ListenAndServe(port, nil)
 	err := http.ListenAndServeTLS(port, certFile, keyFile, nil)
 	if err != nil {
 		log.Fatalf("Server failed: %v", err)
