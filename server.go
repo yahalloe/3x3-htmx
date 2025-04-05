@@ -8,26 +8,27 @@ import (
 )
 
 func main() {
-	// Define port and directories
-	port := ":443"
+	// Change port if needed (use :8443 for local testing)
+	port := ":8443" // change back to ":443" in production if running with proper privileges
 	certFile := "/etc/letsencrypt/live/yahallo.tech/fullchain.pem"
 	keyFile := "/etc/letsencrypt/live/yahallo.tech/privkey.pem"
 	staticDir := http.Dir("./src")
+
+	// Log each request for debugging purposes
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("Request: %s %s", r.Method, r.URL.Path)
+		if r.URL.Path == "/" {
+			http.ServeFile(w, r, filepath.Join("src", "index.html"))
+		} else {
+			http.NotFound(w, r)
+		}
+	})
 
 	// Serve static files under /public and /src
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 	http.Handle("/src/", http.StripPrefix("/src/", http.FileServer(staticDir)))
 
-	// Serve index.html at root
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/" {
-			http.NotFound(w, r)
-			return
-		}
-		http.ServeFile(w, r, filepath.Join("src", "index.html"))
-	})
-
-	// Serve other HTML files
+	// Serve additional HTML files
 	http.HandleFunc("/edgerunners", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
@@ -44,11 +45,12 @@ func main() {
 		http.ServeFile(w, r, filepath.Join("src", "romance.html"))
 	})
 
-	// Reverse Proxy Example
+	// Reverse Proxy Example with improved logging
 	http.HandleFunc("/proxy", func(w http.ResponseWriter, r *http.Request) {
 		targetURL := "https://myanimelist.net/anime/12189/Hyouka"
 		req, err := http.NewRequest("GET", targetURL, nil)
 		if err != nil {
+			log.Printf("Error creating request: %v", err)
 			http.Error(w, "Error creating request", http.StatusInternalServerError)
 			return
 		}
@@ -58,21 +60,29 @@ func main() {
 		client := &http.Client{}
 		resp, err := client.Do(req)
 		if err != nil {
+			log.Printf("Failed to fetch data: %v", err)
 			http.Error(w, "Failed to fetch data", http.StatusInternalServerError)
 			return
 		}
 		defer resp.Body.Close()
 
-		// Set CORS headers and copy the response
+		// Copy response headers and body
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
+		contentType := resp.Header.Get("Content-Type")
+		if contentType != "" {
+			w.Header().Set("Content-Type", contentType)
+		}
 		w.WriteHeader(resp.StatusCode)
-		io.Copy(w, resp.Body)
+		if _, err := io.Copy(w, resp.Body); err != nil {
+			log.Printf("Error copying response: %v", err)
+		}
 	})
 
-	// Start HTTPS server
 	log.Printf("Server running at https://localhost%s\n", port)
-
-	// Using http.DefaultServeMux for the handler
-	log.Fatal(http.ListenAndServeTLS(port, certFile, keyFile, nil))
+	// For local testing, you might not have valid TLS certificates.
+	// If testing without TLS, you can use http.ListenAndServe(port, nil) instead.
+	err := http.ListenAndServeTLS(port, certFile, keyFile, nil)
+	if err != nil {
+		log.Fatalf("Server failed: %v", err)
+	}
 }
