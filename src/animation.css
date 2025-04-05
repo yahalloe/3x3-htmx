@@ -1,0 +1,7 @@
+.grid-container img, .linkingPics img {
+    transition: transform 0.3s ease; /* Apply the transition to both scaling up and down */
+}
+
+.grid-container img:hover, .linkingPics img:hover {
+    transform: scale(1.05); /* Increase the size of the image on hover */
+}

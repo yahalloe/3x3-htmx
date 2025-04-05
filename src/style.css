@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html {
+  margin: 0;
+}
+
+header {
+  padding-top: 0.5em;
+  padding-bottom: 0.5rem;
+  background-color: #222;
+}
+
+h2 {
+  color: #d7d7d7;
+  margin-bottom: 1px;
+  font-size: 1rem;
+  border: 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+#title {
+  flex-direction: column;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+#title:before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  height: 3px;
+  width: 0;
+  margin-left: 100px;
+  bottom: 20px;
+  transition: 0.3s ease;
+  border-radius: 2px;
+}
+
+#title:hover:before {
+  width: 0;
+}
+
+button {
+  margin-top: 1em;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  padding: none;
+  background-color: #111111;
+  color: rgb(255, 255, 255);
+  margin: 0 auto;
+  display: block;
+}
+
+#contacts {
+  text-decoration: none;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+h1 {
+  color: #d7d7d7;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2px;
+  font-size: 4rem;
+  text-align: center;
+  border: 0;
+  font-weight: 400;
+}
+
+body {
+  margin: auto;
+  font-family: "Poppins",Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background-color: #333;
+}
+
+main {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.explanation-container {
+  color: inherit;
+  text-decoration: none;
+  margin-top: 4rem;
+  max-width: 100%;
+  height: auto;
+}
+.not-found-container {
+  margin-top: 1rem;
+}
+
+.grid-container {
+  margin-top: 15rem;
+  max-width: 47%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 0.2fr;
+  gap: 0.9rem;
+}
+
+.grid-container img {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
+.explanation {
+  color: #d7d7d7;
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+p {
+  color: #d7d7d7;
+  text-align: center;
+  font-size: 3.5rem;
+  margin-top: 5em;
+  margin-right: 9em;
+  margin-left: 9em;
+  padding-bottom: 2rem;
+}
+
+.aboutMe-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 25em;
+  max-width: 100%;
+  background-color: #222;
+  text-align: right;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+}
+
+.aboutMe {
+  width: 100%;
+  color: #d7d7d7;
+  line-height: 1.5;
+  text-align: center; /* Center text */
+  padding: 0 3em; /* Adjust padding */
+  font-size: 1.3rem;
+  border: 0;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 0;
+}
+
+.linkingPics {
+  margin-top: 1rem;
+  max-width: 40%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 10px;
+}
+
+.linkingPics img {
+  max-width: 100%;
+  height: auto;
+}
+
+h3 {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  font-size: 1rem;
+  border: 0;
+  text-align: center;
+  font-weight: 10;
+  color: #555555;
+  text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Inherits the color from the parent element, or specify a color if needed */
+  cursor: pointer;
+}
+
+#contacts, #contacts button {
+    cursor: pointer; /* Ensures the pointer cursor appears for both the link and the button */
+  }
+
+aside {
+  background-color: #111;
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  width: 100%;
+}
+
+.contact-us {
+  cursor: pointer;
+  margin-top: 0.5em;
+  color: rgb(209, 207, 207);
+}
+
+.about-us {
+  color: rgb(209, 207, 207);
+}
+
+.copyrights {
+  color: white;
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .grid-container {
+    margin-top: 10rem;
+    max-width: 57%;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  footer {
+    margin-top: 15rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    font-size: 10rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .grid-container {
+    margin-top: 15rem;
+    max-width: 57%;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  footer {
+    margin-top: 19rem;
+  }
+}
+
+/* mobile look */
+@media (max-width: 767px) {
+  h1 {
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 1.1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .explanation-container img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .grid-container {
+    margin-top: 5rem;
+    max-width: 90%;
+    gap: 0.3rem;
+    grid-template-columns: 1fr;
+  }
+
+  .explanation {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .aboutMe-container {
+    padding: 0 0 0 0;
+  }
+
+  .aboutMe {
+    padding: 0 1em;
+    padding-top: 10rem;
+    line-height: 1.8;
+    width: 100%;
+    font-size: 1em;
+    margin: 0;
+    text-align: left; /* Center text on mobile */
+    box-sizing: border-box;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 1em;
+  }
+
+  footer {
+    margin-top: 10rem;
+  }
+
+  .linkingPics {
+    margin: 2em;
+    max-width: 60%;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+
+  .linkingPics img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  aside {
+    margin-top: 10rem;
+    width: 100%;
+  }
+}
