@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Change port if needed (use :8443 for local testing)
-	port := ":3000" // change back to ":443" in production if running with proper privileges
+	port := ":443" // change back to ":443" in production if running with proper privileges
 	certFile := "/etc/letsencrypt/live/yahallo.tech/fullchain.pem"
 	keyFile := "/etc/letsencrypt/live/yahallo.tech/privkey.pem"
 	staticDir := http.Dir("./src")
