@@ -11,7 +11,7 @@
     <title>yahalloe's 3x3</title>
     <link rel="stylesheet" href="src/style.css" />
     <link rel="stylesheet" href="src/animation.css" />
-    <link rel="icon" type="image/jpg" href="images/malProf.webp" />
+    <link rel="icon" type="image/jpg" href="public/logo.svg" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -30,6 +30,32 @@
           behavior: "smooth", // Smooth scrolling
         });
       }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("a[href]");
+
+        links.forEach((link) => {
+          const href = link.getAttribute("href");
+
+          // Detect external link
+          const isExternal = href.startsWith("https");
+
+          if (isExternal) {
+            link.addEventListener("click", (e) => {
+              // Optional: prevent default so we can show loading before leaving
+              e.preventDefault();
+
+              // Show loading
+              document.getElementById("loading-screen").style.display = "flex";
+
+              // Continue with navigation after short delay (or immediately)
+              setTimeout(() => {
+                window.location.href = href;
+              }, 300); // short delay for the user to see the loading screen
+            });
+          }
+        });
+      });
     </script>
   </head>
   <body hx-ext="preload">
@@ -49,9 +75,13 @@
     </header>
     <main>
       <div class="grid-container">
+        <div id="loading-screen" style="display: none;">
+          <div class="spinner"></div>
+          <h3>loading</h3>
+        </div>
         <a
           title="Hyouka"
-          href="https://myanimelist.net/anime/12189/Hyouka"
+          href="https://anilist.co/anime/12189/Hyouka"
           hx-trigger="mouseenter"
           preload="mouseover"
         >
