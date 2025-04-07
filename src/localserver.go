@@ -29,6 +29,8 @@ func main() {
 		validHTMLRoutes := map[string]bool{
 			"/edgerunners": true,
 			"/romance":     true,
+			"/madeinabyss": true,
+			"/op":          true,
 			// Add other valid paths here
 		}
 

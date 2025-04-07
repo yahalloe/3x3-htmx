@@ -14,7 +14,7 @@
       >
     </div>
     <div class="explenation">
-      <p>These are peak shows in my peak watching experience.</p>
+      <h2>These are peak shows in my peak watching experience.</h2>
     </div>
   </header>
   <main>
@@ -96,9 +96,16 @@
       >
         <img src="public/bunnyGirl.jpg" alt="oregairu" height="500px" />
       </a>
-      <a href="animeOP3x3.html" title="animeOP3x3">
-        <img src="public/rere.jpg" alt="" height="500px" />
-      </a>
+      <a title="animeOP3x3"
+        hx-get="/op"
+        hx-target="body"
+        hx-swap="innerHTML"
+        hx-trigger="click"
+        preload-images="true"
+        onclick="scrollToTop()"
+        title="animeOP3x3">
+          <img src="public/rere.jpg" alt="" height="500px" />
+        </a>
       <a href="" title="">
         <img src="public/question.webp" alt="" height="500px" />
       </a>

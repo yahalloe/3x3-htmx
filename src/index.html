@@ -45,21 +45,15 @@
     </header>
     <main>
       <div class="grid-container">
-        <a
-          title="Hyouka"
-          href="https://anilist.co/anime/12189/Hyouka"
-        >
+        <a title="Hyouka" href="https://anilist.co/anime/12189/Hyouka">
           <img src="/public/hyouka.jpg" alt="Hyouka" height="500px" />
         </a>
 
         <a
           hx-get="/edgerunners"
-          preload
-          hx-target="main"
+          hx-target="body"
           hx-swap="innerHTML"
           hx-trigger="click"
-          preload="mouseover"
-          preload-images="true"
         >
           <img
             src="public/edgerunner.gif"
@@ -92,7 +86,13 @@
         >
           <img src="public/suzumiya.jpg" alt="Suzumiya Haruhi" height="500px" />
         </a>
-        <a href="MIA.html" title="Made in Abyss">
+        <a
+          hx-get="/madeinabyss"
+          hx-target="body"
+          hx-swap="innerHTML"
+          hx-trigger="click"
+          title="Made in Abyss"
+        >
           <img
             src="public/madeInAbyss1.jpg"
             alt="Made in Abyss"
@@ -143,11 +143,20 @@
           hx-target="body"
           hx-swap="innerHTML"
           hx-trigger="click"
+          preload-images="true"
           onclick="scrollToTop()"
         >
           <img src="public/oregairu.jpg" alt="oregairu" height="500px" />
         </a>
-        <a href="animeOP3x3.html" title="animeOP3x3">
+        <a
+          title="animeOP3x3"
+          hx-get="/op"
+          hx-target="body"
+          hx-swap="innerHTML"
+          hx-trigger="click"
+          preload-images="true"
+          onclick="scrollToTop()"
+        >
           <img src="public/rere.jpg" alt="" height="500px" />
         </a>
         <a href="" title="">

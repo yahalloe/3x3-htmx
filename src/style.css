@@ -147,17 +147,16 @@ main {
 
 .explanation {
   color: #d7d7d7;
-  margin-top: 1rem;
+  margin-top: 3rem;
   font-weight: 400;
 }
 
 p {
   color: #d7d7d7;
-  text-align: center;
+  text-align: left;
   font-size: 3.5rem;
-  margin-top: 5em;
-  margin-right: 9em;
-  margin-left: 9em;
+  margin-top: 5rem;
+  max-width: 36em;
   padding-bottom: 2rem;
 }
 
@@ -345,6 +344,7 @@ aside {
   }
 
   p {
+    padding-top: 2em;
     font-size: 1rem;
     margin: 1em;
   }
