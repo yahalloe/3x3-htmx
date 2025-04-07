@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Change port if needed (use :8443 for local testing)
-	port := ":443" // change back to ":443" in production if running with proper privileges
+	port := ":3000" // change back to ":443" in production if running with proper privileges
 	certFile := "/etc/letsencrypt/live/yahallo.tech/fullchain.pem"
 	keyFile := "/etc/letsencrypt/live/yahallo.tech/privkey.pem"
 	staticDir := http.Dir("./src")
@@ -24,7 +24,7 @@ func main() {
 		}
 	})
 
-	// Serve static files under /public and /src
+	// Serve static files under /public and /src with correct MIME types
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 	http.Handle("/src/", http.StripPrefix("/src/", http.FileServer(staticDir)))
 

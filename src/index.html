@@ -22,43 +22,13 @@
     <link rel="prefetch" href="/public" />
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     <script src="https://unpkg.com/htmx-ext-preload@2.1.0"></script>
-    <script src="src/scripts.js"></script>
-    <script>
-      function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth", // Smooth scrolling
-        });
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const links = document.querySelectorAll("a[href]");
-
-        links.forEach((link) => {
-          const href = link.getAttribute("href");
-
-          // Detect external link
-          const isExternal = href.startsWith("https");
-
-          if (isExternal) {
-            link.addEventListener("click", (e) => {
-              // Optional: prevent default so we can show loading before leaving
-              e.preventDefault();
-
-              // Show loading
-              document.getElementById("loading-screen").style.display = "flex";
-
-              // Continue with navigation after short delay (or immediately)
-              setTimeout(() => {
-                window.location.href = href;
-              }, 300); // short delay for the user to see the loading screen
-            });
-          }
-        });
-      });
-    </script>
+    <script src="src/script.js"></script>
   </head>
-  <body hx-ext="preload">
+  <body>
+    <div id="loading-screen" style="display: none">
+      <div class="spinner"></div>
+      <h3>loading</h3>
+    </div>
     <header>
       <div class="intro">
         <h2>23年 11.2</h2>
@@ -75,15 +45,9 @@
     </header>
     <main>
       <div class="grid-container">
-        <div id="loading-screen" style="display: none;">
-          <div class="spinner"></div>
-          <h3>loading</h3>
-        </div>
         <a
           title="Hyouka"
           href="https://anilist.co/anime/12189/Hyouka"
-          hx-trigger="mouseenter"
-          preload="mouseover"
         >
           <img src="/public/hyouka.jpg" alt="Hyouka" height="500px" />
         </a>
@@ -116,12 +80,14 @@
         </a>
         <a
           href="https://myanimelist.net/anime/5081/Bakemonogatari"
+          target="_blank"
           title="Monogatari"
         >
           <img src="public/monogatari.jpg" alt="Monogatari" height="500px" />
         </a>
         <a
           href="https://myanimelist.net/anime/849/Suzumiya_Haruhi_no_Yuuutsu"
+          target="_blank"
           title="Suzumiya Haruhi"
         >
           <img src="public/suzumiya.jpg" alt="Suzumiya Haruhi" height="500px" />
@@ -135,12 +101,14 @@
         </a>
         <a
           href="https://myanimelist.net/anime/11061/hunter_x_hunter_2011"
+          target="_blank"
           title="Hunter x Hunter"
         >
           <img src="public/hunter.jpg" alt="Hunter x Hunter" height="500px" />
         </a>
         <a
           href="https://myanimelist.net/anime/37450/Seishun_Buta_Yarou_wa_Bunny_Girl_Senpai_no_Yume_wo_Minai"
+          target="_blank"
           title="Bunny Girl Senpai"
         >
           <img
@@ -149,7 +117,11 @@
             height="500px"
           />
         </a>
-        <a href="https://myanimelist.net/anime/41457/86" title="86">
+        <a
+          href="https://myanimelist.net/anime/41457/86"
+          target="_blank"
+          title="86"
+        >
           <img
             src="public/86-eighty-six-lena-shin-4k--78.0_d.jpg"
             alt="86"
@@ -166,7 +138,6 @@
       <h2>Check my other 3x3's</h2>
       <div class="linkingPics">
         <a
-          href="romcom3x3.html"
           title="romcom3x3"
           hx-get="/romance"
           hx-target="body"
