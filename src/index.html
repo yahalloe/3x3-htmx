@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -168,7 +168,15 @@
           <button><i class="fa-brands fa-twitter"></i></button>
         </a>
         <div class="about-us">
-          <a href="aboutMe.html">
+          <a
+            title="about-me"
+            hx-get="/aboutme"
+            hx-target="body"
+            hx-swap="innerHTML"
+            hx-trigger="click"
+            preload-images="true"
+            onclick="scrollToTop()"
+          >
             <h3>About Me</h3>
           </a>
         </div>

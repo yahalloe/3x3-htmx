@@ -1,0 +1,59 @@
+<header>
+  <div class="intro">
+    <h1>About me</h1>
+  </div>
+</header>
+<main>
+  <div class="aboutMe-container">
+    <p class="aboutMe">
+      I am a second year student studying computer science. <br />I suddenly see
+      this github has a student developer pack so I tried it. <br />I also like
+      anime a lot so here we are.<br /><br />
+
+      That was a year ago. Now, im starting to learn about components <br />
+      and i remembered that I was so crazy about htmx back then, so I finally
+      tried it and implement it in my anime 3x3 website and now i use it for
+      swapping contents. It is very nice. <br /><br />
+
+      I am also using gin in go for my server, it is so good too.
+    </p>
+  </div>
+</main>
+<footer>
+  <h2>Check my other 3x3's</h2>
+  <div class="linkingPics">
+    <a
+      title="romcom3x3"
+      hx-get="/romance"
+      hx-target="body"
+      hx-swap="innerHTML"
+      hx-trigger="click"
+      preload-images="true"
+      onclick="scrollToTop()"
+    >
+      <img src="public/oregairu.jpg" alt="oregairu" height="500px" />
+    </a>
+    <a
+      title="animeOP3x3"
+      hx-get="/op"
+      hx-target="body"
+      hx-swap="innerHTML"
+      hx-trigger="click"
+      preload-images="true"
+      onclick="scrollToTop()"
+    >
+      <img src="public/rere.jpg" alt="" height="500px" />
+    </a>
+    <a href="" title="">
+      <img src="public/question.webp" alt="" height="500px" />
+    </a>
+  </div>
+  <aside>
+    <a id="contacts" href="https://twitter.com/yahalloe">
+      <button><i class="fa-brands fa-twitter"></i></button>
+    </a>
+    <div class="copyrights">
+      <h3>© 2023-2025 yahallo.</h3>
+    </div>
+  </aside>
+</footer>
