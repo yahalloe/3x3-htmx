@@ -1,3 +1,5 @@
+// local server
+
 package main
 
 import (
@@ -27,6 +29,7 @@ func main() {
 		"/romance":     true,
 		"/madeinabyss": true,
 		"/op":          true,
+		"/aboutme":     true,
 	}
 
 	// Catch routes and serve files if valid
