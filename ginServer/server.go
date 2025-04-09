@@ -44,6 +44,7 @@ func main() {
 		"/romance":     true,
 		"/madeinabyss": true,
 		"/op":          true,
+		"/aboutme":     true,
 	}
 
 	// Dynamic route handling
